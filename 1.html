@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>assignment  01 220018772</title>
+</head>
+<body>
+  <script>
+    let events, categorys, times, windSpeeds;
+
+    // to  get event information
+    while(true) {
+      events = prompt('Which event they are competing in (100m or 400m)?');
+      var eventsrecords = '';
+      for(var i = 0; i < events.length; i++) {
+        if((events.charCodeAt(i) >= 48 && events.charCodeAt(i) <= 57) || (events.charCodeAt(i) >= 65 && events.charCodeAt(i) <= 90) || (events.charCodeAt(i) >= 97 && events.charCodeAt(i) <= 122)) {
+          if(events.charCodeAt(i) >= 65 && events.charCodeAt(i) <= 90) {
+            eventsrecords += events[i].toLowerCase();
+          } else {
+            eventsrecords += events[i];
+          }
+        }
+      }
+      if(eventsrecords == '100m' || eventsrecords == '400m') {
+        events = eventsrecords;
+        break;
+      }
+    }
+
+    // to get category information
+    while(true) {
+      categorys = prompt('They are competing in the men\'s or women\'s event?');
+      var categorysrecords = '';
+      for(var i = 0; i < categorys.length; i++) {
+        if((categorys.charCodeAt(i) >= 65 && categorys.charCodeAt(i) <= 90) || (categorys.charCodeAt(i) >= 97 && categorys.charCodeAt(i) <= 122)) {
+          if(categorys.charCodeAt(i) >= 65 && categorys.charCodeAt(i) <= 90) {
+            categorysrecords += categorys[i].toLowerCase();
+          } else {
+            categorysrecords += categorys[i];
+          }
+        }
+      }
+      if(categorysrecords == 'mens' || categorysrecords == 'womens') {
+        categorys = categorysrecords;
+        break;
+      }
+    }
+
+    // get time s
+    while(true) {
+      times = Number(prompt('Their time?'));
+      if(!isNaN(times)) {
+        break;
+      }
+    }
+
+    // get wind speed
+    if(events == '100m') {
+      while(true) {
+        windSpeeds = Number(prompt('Wind speed? (meters/second)'));
+        if(!isNaN(windSpeeds)) {
+          break;
+        }
+      }
+    }
+
+    // check 4 conditions
+    if(events == '100m' && categorys == 'mens' && times < 9.57 && windSpeeds < 2) {
+      alert('They have broken the world record');
+    } else if(events == '100m' && categorys == 'womens' && times < 10.49 && windSpeeds < 2) {
+      alert('They have broken the world record');
+    } else if(events == '400m' && categorys == 'mens' && times < 43.04) {
+      alert('They have broken the world record');
+    } else if(events == '400m' && categorys == 'womens' && times < 47.60) {
+      alert('They have broken the world record');
+    } else {
+      alert('They couldn\'t break the world record');
+    }
+  </script>
+</body>
+</html>
